@@ -10,7 +10,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  build ⚒️:
 
     runs-on: ubuntu-latest
 
@@ -33,10 +33,11 @@ jobs:
         name: build-artifact
         path: build
 
-  deploy:
+  deploy 🚩:
     needs: build
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - uses: actions/download-artifact@v2
       with:
         name: build-artifact
@@ -49,7 +50,7 @@ jobs:
         branch: gh-pages # The branch the action should deploy to.
         folder: /home/runner/work/react-todo-app/build # The folder the action should deploy.
 
-  scan:
+  scan 👓:
     env:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
