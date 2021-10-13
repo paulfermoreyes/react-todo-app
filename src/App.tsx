@@ -44,7 +44,7 @@ function App() {
         {todos.map((todo, index) => (
           <Row>
             <Col>
-              <Card>
+              <Card style={{backgroundColor: todo.isDone ? "#EFEFEF" : "#FFF" }} className="mx-auto my-1"> 
                 <Card.Body>
                   <Todo
                     key={index}
