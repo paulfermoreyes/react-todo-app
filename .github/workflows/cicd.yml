@@ -30,6 +30,8 @@ jobs:
     - run: yarn build
     - run: yarn test
   scan:
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     runs-on: ubuntu-latest
     steps:
     - name: SonarCloud Scan
