@@ -5,7 +5,6 @@ function Todo({ todo, index, markTodo, removeTodo }: ITodoProps) {
     return (
         <div
             className="todo"
-
         >
             <div style={{width: '18px'}}>
                 <Form.Check
@@ -15,9 +14,9 @@ function Todo({ todo, index, markTodo, removeTodo }: ITodoProps) {
                 />
             </div>
             <span style={{ textDecoration: todo.isDone ? "line-through" : "" }}>{todo.text}</span>
-            <div>
+            <div style={{margin: "90px"}}>
                 {/* <Button variant="outline-success" onClick={() => markTodo(index)}>✓</Button>{' '} */}
-                <Button variant="outline-danger" onClick={() => removeTodo(index)}>✕</Button>
+                <Button variant="outline-danger" size="sm" onClick={() => removeTodo(index)}>✕</Button>
             </div>
         </div>
     );

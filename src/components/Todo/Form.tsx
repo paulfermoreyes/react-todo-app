@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import { Card, Button, Form, InputGroup, FormControl } from "react-bootstrap";
+import { Button, Form, InputGroup } from "react-bootstrap";
 import { ITodoFormProps } from "./types";
 
 function FormTodo({ addTodo }: ITodoFormProps) {

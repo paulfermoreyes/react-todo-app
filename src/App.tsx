@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import React from 'react';
 import { IndexKind } from 'typescript';
 import FormTodo from './components/Todo/Form';
@@ -41,21 +41,23 @@ function App() {
       <div className="container">
         <h1 className="text-center mb-4">Todo List</h1>
         <FormTodo addTodo={addTodo} />
-        <div>
-          {todos.map((todo, index) => (
-            <Card>
-              <Card.Body>
-                <Todo
-                  key={index}
-                  index={index}
-                  todo={todo}
-                  markTodo={markTodo}
-                  removeTodo={removeTodo}
-                />
-              </Card.Body>
-            </Card>
-          ))}
-        </div>
+        {todos.map((todo, index) => (
+          <Row>
+            <Col>
+              <Card>
+                <Card.Body>
+                  <Todo
+                    key={index}
+                    index={index}
+                    todo={todo}
+                    markTodo={markTodo}
+                    removeTodo={removeTodo}
+                  />
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        ))}
       </div>
     </div>
   )
