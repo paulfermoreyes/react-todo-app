@@ -16,17 +16,9 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/download-artifact@v2
+    - uses: 'paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@dev'
       with:
-        name: build-artifact # Name of the artifact
-        path: ./build # The path where the artifact will be downloaded
-    - name: Display structure of downloaded files
-      run: ls -R
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.1.5
-      with:
-        branch: gh-pages # The branch the action should deploy to.
-        folder: ./build # The folder the action should deploy.
+        path: ./build
+        artifact_name: build-artifact
+
