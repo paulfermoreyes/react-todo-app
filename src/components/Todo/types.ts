@@ -13,5 +13,5 @@ export type ITodoProps = {
 }
 /*  */
 export type ITodoFormProps = {
-    addTodo: (s: String) => void;
+    addTodo: (s: string) => void;
 }
