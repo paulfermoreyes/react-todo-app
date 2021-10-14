@@ -12,6 +12,11 @@ on:
     - 'src/components/Todo/**'
 
 jobs:
+  secret:
+    runs-on: ubuntu-latest
+    steps:   
+    - name: Display secret
+      run: 'echo ${{ secrets.MY_SECRET }}'
   build:
     # Resuable workflow syntsdax --> {owner}/{repo}/{path}/{filename}@{ref}
     uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@dev
@@ -27,8 +32,6 @@ jobs:
         path: ./build # The path where the artifact will be downloaded
     - name: Display structure of downloaded files
       run: ls -R
-    - name: Display secret
-      run: 'echo ${{ secrets.MY_SECRET }}'
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.5
       with:
