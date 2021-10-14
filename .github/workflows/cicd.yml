@@ -23,7 +23,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: wsl
     steps:
     - uses: actions/checkout@v2
     - uses: actions/download-artifact@v2

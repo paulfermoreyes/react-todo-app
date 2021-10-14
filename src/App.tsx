@@ -16,7 +16,7 @@ function App() {
 
   const addTodo = (text: String) => {
     const newTodo = {
-      text: text,
+      text: 'text',
       isDone: false
     }
     const newTodos = [...todos, newTodo];
