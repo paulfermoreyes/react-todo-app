@@ -1,34 +1,21 @@
 name: Deploy to Github Pages
 on:
-  workflow_call:
-    inputs:
-      path:
-        description: 'Path of folder to deploy'
-        type: string
-        required: true
-      artifact_name:
-        description: 'Name of artifact to deploy'
-        type: string
-        required: true
-      gh_pages_branch:
-        description: 'Branch used for Github Pages'
-        type: string
-        required: false
-        default: 'gh-pages'
+  workflow_run:
+    workflows: ["Build Workflow"]
+    types:
+      - completed
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/download-artifact@v2
-      with:
-        name: ${{ inputs.artifact_name }} # Name of the artifact
-        path: ${{ inputs.path }} # The path where the artifact will be downloaded
-    - name: Display structure of downloaded files
-      run: ls -R
-    - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@4.1.5
-      with:
-        branch: ${{ inputs.gh_pages_branch }} # The branch the action should deploy to.
-        folder: ${{ inputs.path }} # The folder the action should deploy.
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+          path: build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4
+        with:
+          branch: gh-pages
+          folder: build
