@@ -24,7 +24,7 @@ jobs:
           cache: "yarn"
       - run: corepack enable
       - name: 💿 Install dependencies
-        run: yarn install --no-immutable"
+        run: yarn install --no-immutable
       - name: ⚒ Build application
         run: yarn build
       - name: 🚀 Deploy
