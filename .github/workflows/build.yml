@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: 16.x
           cache: "yarn"
+      - run: corepack enable
       - name: 💿 Install dependencies
         run: yarn install --no-immutable"
       - name: ⚒ Build application

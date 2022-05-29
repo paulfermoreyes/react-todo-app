@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/paulfermoreyes/Code/react-todo-app/.github/workflows/build.yml"
+    }
+}
