@@ -9,11 +9,11 @@ on:
 
 jobs:
   build:
-    uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@dev
+    uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@feature/todo
 
   deploy:
     needs: build
-    uses: paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@dev
+    uses: paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@feature/todo
     with:
       path: ./build
       artifact_name: build-artifact
