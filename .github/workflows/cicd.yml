@@ -11,8 +11,9 @@ on:
 
 jobs:
   build:
-    # Resuable workflow syntsdax --> {owner}/{repo}/{path}/{filename}@{ref}
-    uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@dev
+    steps:
+      # Resuable workflow syntsdax --> {owner}/{repo}/{path}/{filename}@{ref}
+    - uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@dev
 
   deploy:
     needs: build
