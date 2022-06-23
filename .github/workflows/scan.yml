@@ -1,6 +1,8 @@
 name: Scanner
 
 on:
+  pull_request:
+    branches: [main]
   workflow_call:
     inputs:
       organization:

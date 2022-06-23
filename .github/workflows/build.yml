@@ -2,30 +2,33 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Build Workflow
-on: workflow_call
+on:
+  push:
+    branches: [main]
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x, 14.x, 16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    # strategy:
+    #   matrix:
+    #     node-version: [12.x, 14.x, 16.x]
+    # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - name: Install dependencies 💿
-      run: yarn
-    - name: Build application ⚒
-      run: yarn build
-    - name: Persist build data to workflow 💾
-      uses: actions/upload-artifact@v2
-      with:
-        name: build-artifact
-        path: ./build
-        gh_pages_branch: gh_pages
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        # name: Use Node.js ${{ matrix.node-version }}
+        name: Use Node.js
+        with:
+          node-version: 16.x
+          cache: "yarn"
+      - run: corepack enable
+      - name: 💿 Install dependencies
+        run: yarn install --no-immutable
+      - name: ⚒ Build application
+        run: yarn build
+      - name: 🚀 Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: build
