@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - uses: "paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@dev"
+      - uses: paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@dev
         with:
           path: ./build
           artifact_name: build-artifact
