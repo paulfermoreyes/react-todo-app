@@ -9,16 +9,11 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-      # Resuable workflow syntsdax --> {owner}/{repo}/{path}/{filename}@{ref}
-      - uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@dev
+    uses: paulfermoreyes/react-todo-app/.github/workflows/build.yml@dev
 
   deploy:
-    runs-on: ubuntu-latest
     needs: build
-    steps:
-      - uses: paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@dev
-        with:
-          path: ./build
-          artifact_name: build-artifact
+    uses: paulfermoreyes/react-todo-app/.github/workflows/deploy.yml@dev
+    with:
+      path: ./build
+      artifact_name: build-artifact
